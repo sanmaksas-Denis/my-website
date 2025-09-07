@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lochquarry Outdoor Centre</title>
+        <link rel="stylesheet" href="sydeNav.css">
+        <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f5;
+            color: #333;
+            display: flex;
+            flex-direction: row;
+            overflow-x: hidden;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 220px;
+            height: 100vh;
+            background-color: #045d56;
+            padding-top: 30px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        nav ul li {
+            width: 100%;
+            text-align: center;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 10px 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #00ffc3;
+            color: #000;
+        }
+        nav ul li a.active {
+            background-color: #2980b9;
+            color: #fff;
+        }
+        #searchForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        #searchInput {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+            font-size: 14px;
+            width: 80%;
+        }
+        #dateTimeDisplay {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+        main {
+            margin-left: 220px;
+            padding: 20px;
+            flex: 1;
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+        }
+        .logo img {
+            width: 260px;
+            height: auto;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px;
+            flex-wrap: wrap;
+        }
+        .thumbnail {
+            width: 150px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .thumbnail:hover {
+            transform: scale(2);
+         z-index: 10;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+        .description {
+            text-align: center;
+            padding: 20px;
+            background-color: #e0e7ea;
+        }
+        .comments {
+            background-color: #d9edf7;
+            padding: 20px;
+            margin: 20px;
+            border-left: 5px solid #31708f;
+        }
+        footer .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: #cccdb1;
+        }
+        footer .socials img {
+            width: 32px;
+            height: 32px;
+        }
+        .menu-video {
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            width: 200px;
+        }
+        .menu-video video {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            nav {
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+            main {
+                margin-left: 0;
+            }
+            .photo-strip {
+                flex-direction: column;
+            }
+            .zoomable:hover {
+                transform: scale(1.5);
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="ground.html">Ground</a></li>
+                <li><a href="water.html">Water</a></li>
+                <li><a href="rope.html">Rope</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li>
+                    <form id="searchForm" action="https://www.google.com/search" method="GET" target="_blank">
+                        <input type="text" id="searchInput" name="q" placeholder="Enter your query..." required aria-label="Search query">
+                        <button type="submit" aria-label="Search Google">🔎 Search</button>
+                    </form>
+                </li>
+                <li><span id="dateTimeDisplay"></span></li>
+            </ul>
+            <div class="menu-video">
+                <video width="200" controls muted>
+                    <source src="video/cave.mp4" type="video/mp4">
+                </video>
+            </div>
+        </nav>
+        <main>
+            <header>
+                <div class="logo">
+                    <img src="фото/логотип/лого.png" alt="Lochquarry Logo">
+                </div>
+                <section class="description">
+                    <h1>Welcome to Lochquarry Outdoor Centre!</h1>
+                </section>
+            </header>
+            <section class="gallery">
+                <h2>Nature Gallery</h2>
+                <img src="фото/природа/Nature.webp" alt="фото 1" class="thumbnail" data-full="фото/природа/Nature.webp">
+                <img src="фото/природа/Nature_2.webp" alt="фото 2" class="thumbnail" data-full="фото/природа/Nature_2.webp">
+                <img src="фото/природа/Nature_3.webp" alt="фото 3" class="thumbnail" data-full="фото/природа/Nature_3.webp">
+            </section>
+            <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+                <span class="close" aria-label="Close image viewer" role="button" tabindex="0">&times;</span>
+                <img id="lightbox-img"
+                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                     alt="Full-size image"
+                     loading="lazy"
+                     decoding="async">
+            </div>
+            <section class="description">
+                <h2>About Our Activities</h2>
+                <p>Lochquarry Outdoor Centre provides outdoor activities for young people aged 6–18.</p>
+                <p>The activities that the centre offers can be split into three main categories: land-based, water-based and rope-based.</p>
+            </section>
+            <aside class="comments">
+                <h2>Comments</h2>
+                <hr>
+                <p>‘We had a great time and loved all the different activities that we did’ − 8th Gourock Guides</p>
+                <hr>
+                <p>‘I would definitely come back’ − Kelly, aged 9</p>
+                <hr>
+                <p>‘Five stars, it was great’ − Joe, aged 14</p>
+                <hr>
+                <p>‘The kids had a ball and didn’t want to leave’ − Mr Evans, PE teacher</p>
+            </aside>
+            <footer>
+                <div class="socials">
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <img src="фото/соцсети/facebook.webp" alt="Visit our Facebook page">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img src="фото/соцсети/Instagram.webp" alt="Visit our Instagram profile">
+                    </a>
+                    <a href="https://www.youtube.com/" target="_blank">
+                        <img src="фото/соцсети/youtube.webp" alt="Visit our YouTube channel">
+                    </a>
+                    <a href="https://www.tiktok.com/" target="_blank">
+                        <img src="фото/соцсети/tiktok.webp" alt="Visit our TikTok page">
+                    </a>
+                </div>
+            </footer>
+        </main>
+        <script>
+        function updateDateTimeEnglish() {
+        const now = new Date();
+        const options = {
+        timeZone: 'Europe/London', // фиксированная зона
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+        };
+        document.getElementById('dateTimeDisplay').textContent = now.toLocaleString('en-GB', options);
+        }
+        updateDateTimeEnglish();
+        setInterval(updateDateTimeEnglish, 1000); // обновление каждую секунду
+        // Функциональность лайтбокса
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox .close');
+        thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', () => {
+        const fullImgSrc = thumbnail.getAttribute('data-full');
+        lightboxImg.src = fullImgSrc;
+        lightbox.style.display = 'flex';
+        });
+        });
+        closeBtn.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+        lightboxImg.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+        });
+        document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+        lightbox.style.display = 'none';
+        lightboxImg.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+        }
+        });
+        </script>
+    </body>
+</html>

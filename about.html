@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lochquarry Outdoor Centre</title>
+        <link rel="stylesheet" href="sydeNav.css">
+        <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f5;
+            color: #333;
+            display: flex;
+            flex-direction: row;
+            overflow-x: hidden;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 220px;
+            height: 100vh;
+            background-color: #045d56;
+            padding-top: 30px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        nav ul li {
+            width: 100%;
+            text-align: center;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 10px 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #00ffc3;
+            color: #000;
+        }
+        nav ul li a.active {
+            background-color: #2980b9;
+            color: #fff;
+        }
+        #searchForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        #searchInput {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+            font-size: 14px;
+            width: 80%;
+        }
+        #dateTimeDisplay {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+        main {
+            margin-left: 220px;
+            padding: 20px;
+            flex: 1;
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+        }
+        .logo img {
+            width: 260px;
+            height: auto;
+        }
+        .description {
+            text-align: center;
+            padding: 20px;
+            background-color: #e0e7ea;
+        }
+        .comments {
+            background-color: #d9edf7;
+            padding: 20px;
+            margin: 20px;
+            border-left: 5px solid #31708f;
+        }
+       footer .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: #cccdb1;
+        }
+        footer .socials img {
+            width: 32px;
+            height: 32px;
+        }
+        .staff-member {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .staff-photo {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .staff-info {
+            max-width: 600px;
+        }
+        #introScreen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-color: rgba(4, 93, 86, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        #introBox {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border: 4px solid #00ffc3;
+        }
+        #nameInput, #startBtn {
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        #nameInput {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        #startBtn {
+            padding: 10px 20px;
+            background-color: #00ffc3;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #personalGreeting {
+            text-align: center;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #045d56;
+        }
+         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            nav {
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+            main {
+                margin-left: 0;
+            }
+            .photo-strip {
+                flex-direction: column;
+            }
+            .zoomable:hover {
+                transform: scale(1.5);
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div id="introScreen">
+            <div id="introBox" role="dialog" aria-labelledby="introTitle">
+                <h2 id="introTitle" style="color: #045d56;">Welcome to Lochquarry Outdoor Centre</h2>
+                <p>Please enter your name to continue:</p>
+                <input type="text" id="nameInput" placeholder="Your name..." aria-label="Your name">
+                <button id="startBtn" type="button" aria-label="Start browsing site">Enter</button>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="ground.html">Ground</a></li>
+                <li><a href="water.html">Water</a></li>
+                <li><a href="rope.html">Rope</a></li>
+                <li>
+                    <form id="searchForm" action="https://www.google.com/search" method="GET" target="_blank">
+                        <input type="text" id="searchInput" name="q" placeholder="Enter your query..." required>
+                        <button type="submit">🔎 Search</button>
+                    </form>
+                </li>
+                <li><span id="dateTimeDisplay"></span></li>
+                <li><a href="https://www.visitscotland.com/" target="_blank" style="color: #00ffc3; font-weight: normal;">Visit Scotland →</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div id="personalGreeting"></div>
+            <header>
+                <div class="logo">
+                    <img src="фото/логотип/лого.png" alt="Lochquarry Logo">
+                </div>
+            </header>
+            <section class="description">
+                <hr>
+                <h1>Site Information</h1>
+                <p>Lochquarry Outdoor Centre is set in acres of land in the heart of the majestic Argyll hills.</p>
+                <p>On our doorstep is not only magnificent scenery, but also a breath-taking selection of outdoor and adventurous activities.</p>
+                <p>With activities designed to meet the needs of all ages and experiences of young people, Lochquarry truly brings adventure to everyone.</p>
+                <p>Each activity is run under the instruction of one of our highly trained staff and all safety equipment is provided.</p>
+                <p>Let’s meet some of the Lochquarry staff:</p>
+                <hr>
+                <div class="staff-member">
+                    <img src="фото/работа/Claire_Jack.webp" alt="Claire Jack" class="staff-photo">
+                    <div class="staff-info">
+                        <h3>Claire Jack</h3>
+                        <p><strong>Position:</strong> Centre Manager</p>
+                        <p><strong>Responsible for:</strong> The overall running of the centre and all of its activities</p>
+                        <p><strong>Favourite Activity:</strong> Pole climb</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="staff-member">
+                    <img src="фото/работа/Robbie_Elliot.webp" alt="Robbie Elliot" class="staff-photo">
+                    <div class="staff-info">
+                        <h3>Robbie Elliot</h3>
+                        <p><strong>Position:</strong> Senior Instructor (Land)</p>
+                        <p><strong>Responsible for:</strong> Overseeing all of the land based activities</p>
+                        <p><strong>Favourite Activity:</strong> Hillwalking in the beautiful Scottish highlands</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="staff-member">
+                    <img src="фото/работа/Marion_Hunter.webp" alt="Marion Hunter" class="staff-photo">
+                    <div class="staff-info">
+                        <h3>Marion Hunter</h3>
+                        <p><strong>Position:</strong> Centre Administrator</p>
+                        <p><strong>Responsible for:</strong> Making bookings and arranging activity slots for groups</p>
+                        <p><strong>Favourite Activity:</strong> Making sure everyone has a great time when they visit Lochquarry</p>
+                    </div>
+                </div>
+                <hr>
+                <p>Our activities are very popular with youth groups including Scouts and Guides.</p>
+                <p>To book your next adventure at Lochquarry, please phone <strong>01475 229 8311</strong>.</p>
+            </section>
+            <aside class="comments">
+                <h2>Comments</h2>
+                <hr>
+                <p>‘I was really scared about the abseiling but the instructor Mike was really encouraging and helped me do it, thanks Mike’ − Sophie, aged 10</p>
+            </aside>
+            <footer>
+                <div class="socials">
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <img src="фото/соцсети/facebook.webp" alt="Visit our Facebook page">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img src="фото/соцсети/Instagram.webp" alt="Visit our Instagram profile">
+                    </a>
+                    <a href="https://www.youtube.com/" target="_blank">
+                        <img src="фото/соцсети/youtube.webp" alt="Visit our YouTube channel">
+                    </a>
+                    <a href="https://www.tiktok.com/" target="_blank">
+                        <img src="фото/соцсети/tiktok.webp" alt="Visit our TikTok page">
+                    </a>
+                </div>
+            </footer>
+        </main>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const introScreen = document.getElementById("introScreen");
+        const nameInput = document.getElementById("nameInput");
+        const startBtn = document.getElementById("startBtn");
+        const mainContent = document.querySelector("main");
+        const nav = document.querySelector("nav");
+        const greeting = document.getElementById("personalGreeting");
+        const dateTimeElement = document.getElementById("dateTimeDisplay");
+        // Всегда показываем интро-экран при загрузке
+        introScreen.style.display = "flex";
+        if (mainContent) mainContent.style.display = "none";
+        if (nav) nav.style.display = "none";
+        startBtn.addEventListener("click", function () {
+        const name = nameInput.value.trim();
+        if (name !== "") {
+        introScreen.style.display = "none";
+        if (nav) nav.style.display = "block";
+        if (mainContent) mainContent.style.display = "block";
+        if (greeting) {
+        greeting.textContent = `Hello, ${name}! Welcome to Lochquarry Outdoor Centre!`;
+        }
+        } else {
+        alert("Please enter your name to continue.");
+        }
+        });
+        // Обновление даты и времени
+        function updateDateTimeEnglish() {
+        const now = new Date();
+        const options = {
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+        };
+        if (dateTimeElement) {
+        dateTimeElement.textContent = now.toLocaleString('en-GB', options);
+        }
+        }
+        updateDateTimeEnglish();
+        setInterval(updateDateTimeEnglish, 1000);// обновление каждую секунду
+        });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lochquarry Outdoor Centre</title>
+        <link rel="stylesheet" href="sydeNav.css">
+        <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f5;
+            color: #333;
+            display: flex;
+            flex-direction: row;
+            overflow-x: hidden;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 220px;
+            height: 100vh;
+            background-color: #045d56;
+            padding-top: 30px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        nav ul li {
+            width: 100%;
+            text-align: center;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 10px 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #00ffc3;
+            color: #000;
+        }
+        nav ul li a.active {
+            background-color: #2980b9;
+            color: #fff;
+        }
+        #searchForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        #searchInput {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+            font-size: 14px;
+            width: 80%;
+        }
+        #dateTimeDisplay {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+        main {
+            margin-left: 220px;
+            padding: 20px;
+            flex: 1;
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+        }
+        .logo img {
+            width: 260px;
+            height: auto;
+        }
+        .description {
+            text-align: center;
+            padding: 20px;
+            background-color: #e0e7ea;
+        }
+        .comments {
+            background-color: #d9edf7;
+            padding: 20px;
+            margin: 20px;
+            border-left: 5px solid #31708f;
+        }
+        footer .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: #cccdb1;
+        }
+        footer .socials img {
+            width: 32px;
+            height: 32px;
+        }
+        .photo-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        .zoomable {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .zoomable:hover {
+            transform: scale(2);
+            z-index: 9999;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+        }
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            nav {
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+            main {
+                margin-left: 0;
+            }
+            .photo-strip {
+                flex-direction: column;
+            }
+            .zoomable:hover {
+                transform: scale(1.5);
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="water.html">Water</a></li>
+                <li><a href="rope.html">Rope</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li>
+                    <form id="searchForm" action="https://www.google.com/search" method="GET" target="_blank">
+                        <input type="text" id="searchInput" name="q" placeholder="Enter your query..." required aria-label="Search query">
+                        <button type="submit" aria-label="Search Google">🔎 Search</button>
+                    </form>
+                </li>
+                <li><span id="dateTimeDisplay"></span></li>
+                <li><a href="https://www.visitscotland.com/" target="_blank" style="color: #00ffc3; font-weight: normal;">Visit Scotland →</a></li>
+            </ul>
+        </nav>
+        <main>
+            <header>
+                <div class="logo">
+                    <img src="фото/логотип/лого.png" alt="Lochquarry Logo">
+                </div>
+                <section class="description">
+                    <h1>Welcome to Lochquarry Outdoor Centre!</h1>
+                </section>
+            </header>
+            <section class="description">
+                <h2>Photos from our events</h2>
+                <div class="photo-strip">
+                    <img src="фото/наземный/Archery.webp" alt="фото 1" class="zoomable">
+                    <img src="фото/наземный/Archery_2.webp" alt="фото 2" class="zoomable">
+                    <img src="фото/наземный/Axe.webp" alt="фото 3" class="zoomable">
+                    <img src="фото/наземный/Axe_2.webp" alt="фото 4" class="zoomable">
+                    <img src="фото/наземный/Hillwalking.webp" alt="фото 5" class="zoomable">
+                    <img src="фото/наземный/Hillwalking_2.webp" alt="фото 6" class="zoomable">
+                    <img src="фото/наземный/Hillwalking_3.webp" alt="фото 7" class="zoomable">
+                    <img src="фото/наземный/Orienteering.webp" alt="фото 8" class="zoomable">
+                    <img src="фото/наземный/Orienteering_2.webp" alt="фото 9" class="zoomable">
+                </div>
+            </section>
+            <section class="description">
+                <hr>
+                <h1>Land Based Activities</h1>
+                <p>Visitors can take part in a wide range of land-based activities on and off site.</p>
+                <hr>
+                <h1>Hillwalking</h1>
+                <p>From short walks around the site to Munro-bagging expeditions, Lochquarry has it all!</p>
+                <p>Walks can be tailored to suit any age or experience of groups and can last from one hour to all day adventures.</p>
+                <p>Max group size: 12</p>
+                <p>Ages: 6+</p>
+                <hr>
+                <h1>Archery</h1>
+                <p>Are you the next Robin Hood?</p>
+                <p>Learn to hold a bow and fire an arrow and take part in fast and fun shootout competitions.</p>
+                <p>Max group size: 6</p>
+                <p>Ages: 6+</p>
+                <hr>
+                <h1>Orienteering</h1>
+                <p>Set in the centre’s grounds, find all the markers and make it back in time to show off your superior navigation knowledge.</p>
+                <p>Groups of 2+, one map per group.</p>
+                <p>Ages: 6+</p>
+                <hr>
+                <h1>Axe Throwing</h1>
+                <p>Take yourself back to a time of Vikings and have a go at throwing an axe.</p>
+                <p>Try to hit the target — better yet, throw yourself a bullseye.</p>
+                <p>Max group size: 6</p>
+                <p>Ages: 10+</p>
+            </section>
+            <aside class="comments">
+                <h2>Comments</h2>
+                <hr>
+                <p>‘The archery was brilliant, but not as good as axe throwing. I never thought we’d be allowed to do that! I got one of my axes right in the middle of the target.’ − Scott, aged 13</p>
+            </aside>
+            <footer>
+                <div class="socials">
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <img src="фото/соцсети/facebook.webp" alt="Visit our Facebook page">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img src="фото/соцсети/Instagram.webp" alt="Visit our Instagram profile">
+                    </a>
+                    <a href="https://www.youtube.com/" target="_blank">
+                        <img src="фото/соцсети/youtube.webp" alt="Visit our YouTube channel">
+                    </a>
+                    <a href="https://www.tiktok.com/" target="_blank">
+                        <img src="фото/соцсети/tiktok.webp" alt="Visit our TikTok page">
+                    </a>
+                </div>
+            </footer>
+        </main>
+        <script>
+        function updateDateTimeEnglish() {
+        const now = new Date();
+        const options = {
+        timeZone: 'Europe/London', // фиксированная зона
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+        };
+        document.getElementById('dateTimeDisplay').textContent = now.toLocaleString('en-GB', options);
+        }
+        updateDateTimeEnglish();
+        setInterval(updateDateTimeEnglish, 1000); // обновление каждую секунду
+        </script>
+    </body>
+</html>
